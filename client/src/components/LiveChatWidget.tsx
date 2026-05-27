@@ -8,7 +8,7 @@ import { io, Socket } from 'socket.io-client';
 interface Message {
   id: string;
   text: string;
-  sender: 'user' | 'bot';
+  sender: 'user' | 'bot' | 'admin';
   timestamp: Date;
 }
 
@@ -30,7 +30,7 @@ export default function LiveChatWidget() {
 
   useEffect(() => {
     // Initialize socket connection
-    socketRef.current = io('http://localhost:5000');
+    socketRef.current = io('https://motomonk.onrender.com');
 
     socketRef.current.on('receive_admin_message', (data: Message) => {
       setMessages(prev => [...prev, data]);
