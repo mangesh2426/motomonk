@@ -19,7 +19,7 @@ export default function SettingsPage() {
 
   useEffect(() => {
     const token = localStorage.getItem('adminToken');
-    fetch('http://localhost:5000/api/settings', {
+    fetch('https://motomonk.onrender.com/api/settings', {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -40,7 +40,7 @@ export default function SettingsPage() {
   const handleSave = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const res = await fetch('http://localhost:5000/api/settings', {
+      const res = await fetch('https://motomonk.onrender.com/api/settings', {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',

@@ -46,7 +46,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     const token = localStorage.getItem('adminToken');
-    fetch('http://localhost:5000/api/leads', {
+    fetch('https://motomonk.onrender.com/api/leads', {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -56,7 +56,7 @@ export default function AdminDashboard() {
         setLeads(data.leads || []);
       });
 
-    const socket = io('http://localhost:5000');
+    const socket = io('https://motomonk.onrender.com');
     
     socket.on('lead_created', (newLead: Lead) => {
       setLeads((prevLeads) => [newLead, ...prevLeads]);
@@ -77,7 +77,7 @@ export default function AdminDashboard() {
 
   const deleteLead = async (id: string) => {
     try {
-      await fetch(`http://localhost:5000/api/leads/${id}`, {
+      await fetch(`https://motomonk.onrender.com/api/leads/${id}`, {
         method: 'DELETE',
       });
 
@@ -89,7 +89,7 @@ export default function AdminDashboard() {
 
   const updateStatus = async (id: string, status: string) => {
     try {
-      await fetch(`http://localhost:5000/api/leads/${id}/status`, {
+      await fetch(`https://motomonk.onrender.com/api/leads/${id}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -41,7 +41,7 @@ export default function ContactForm() {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/leads/create', {
+      const response = await fetch('https://motomonk.onrender.com/api/leads/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

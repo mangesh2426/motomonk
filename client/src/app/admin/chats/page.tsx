@@ -30,7 +30,7 @@ export default function ChatsPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    socketRef.current = io('http://localhost:5000');
+    socketRef.current = io('https://motomonk.onrender.com');
     
     socketRef.current.emit('join_admin');
 

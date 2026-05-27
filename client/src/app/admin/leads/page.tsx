@@ -72,7 +72,7 @@ export default function LeadsPage() {
     for (const id of selectedLeads) {
       try {
         const token = localStorage.getItem('adminToken');
-        await fetch(`http://localhost:5000/api/leads/${id}`, { 
+        await fetch(`https://motomonk.onrender.com/api/leads/${id}`, { 
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -87,7 +87,7 @@ export default function LeadsPage() {
 
   useEffect(() => {
     const token = localStorage.getItem('adminToken');
-    fetch('http://localhost:5000/api/leads', {
+    fetch('https://motomonk.onrender.com/api/leads', {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -98,7 +98,7 @@ export default function LeadsPage() {
       })
       .catch((err) => console.error('Failed to fetch leads', err));
 
-    const socket = io('http://localhost:5000');
+    const socket = io('https://motomonk.onrender.com');
     
     socket.on('lead_created', (newLead: Lead) => {
       setLeads((prevLeads) => [newLead, ...prevLeads]);
