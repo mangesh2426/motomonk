@@ -53,7 +53,13 @@ io.on('connection', (socket) => {
 });
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://motomonk-invj.vercel.app"
+  ],
+  credentials: true
+}));
 app.use(express.json());
 app.use("/api/leads", leadRoutes);
 app.use('/api/auth', authRoutes);
